@@ -7,7 +7,7 @@ public class Food : MonoBehaviour
     public BoxCollider2D gridarea;
     private void Start()
     {
-        RandomizePosition();
+        StartCoroutine(changePos());
     }
 
     private void RandomizePosition()
@@ -17,6 +17,13 @@ public class Food : MonoBehaviour
         float y = Random.Range(bounds.min.y, bounds.max.y);
 
         this.transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0.0f);
+    }
+    IEnumerator changePos()
+    {
+        RandomizePosition();
+        yield return new WaitForSeconds(Random.Range(6f, 10f));
+
+        StartCoroutine(changePos());
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
