@@ -22,7 +22,7 @@ public class MassBurner : MonoBehaviour
     IEnumerator changePosition()
     {
         RandomizePosition();
-        yield return new WaitForSeconds(Random.Range(6f, 10f));
+        yield return new WaitForSeconds(Random.Range(8f, 12f));
 
         StartCoroutine(changePosition());
     }
